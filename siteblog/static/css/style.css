@@ -19,6 +19,7 @@
 
 }
 
+
 .navbar-brand img {
     height: 80px; /* Adjust as needed */
     width: auto;
@@ -35,6 +36,15 @@
 
 .navbar-links li {
     margin-left: 1rem;
+    border-radius: 50%;
+    border: 1px solid #333;
+    padding: 0.5rem;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+.navbar-brand {
+    display: contents;
 }
 
 .navbar-links a {
@@ -45,8 +55,8 @@
     transition: background-color 0.2s ease;
 }
 
-.navbar-links a:hover {
-    background-color: #ddd;
+.navbar-links li:hover {
+    transform: scale(1.1);
 }
 
 .navbar-links a[aria-current="page"] {

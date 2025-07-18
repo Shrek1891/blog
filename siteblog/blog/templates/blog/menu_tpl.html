@@ -1,0 +1,11 @@
+<div class="{{ menu_class }}">
+    <ul class="navbar-links">
+        <li><a href="{% url 'home' %}" aria-current="page">Home</a></li>
+        {% for category in categories %}
+        <li><a href="{% url 'categories' category.slug %}">{{ category.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+

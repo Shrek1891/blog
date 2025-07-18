@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
     'debug_toolbar',
-    'ckeditor',
 ]
 
 MIDDLEWARE = [

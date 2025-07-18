@@ -19,6 +19,8 @@
 
 }
 
+
+
 .navbar-brand img {
     height: 80px; /* Adjust as needed */
     width: auto;
@@ -46,7 +48,7 @@
 }
 
 .navbar-links a:hover {
-    background-color: #ddd;
+    background-color: blueviolet;
 }
 
 .navbar-links a[aria-current="page"] {

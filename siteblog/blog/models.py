@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 
 # Create your models here.
 
@@ -6,12 +8,27 @@ class Category(models.Model):
     title = models.CharField(max_length=150)
     slug = models.SlugField(max_length=150, unique=True, verbose_name="URL")
 
+    def get_absolute_url(self):
+        return reverse("category", kwargs={"slug": self.slug})
+
+    class Meta:
+        ordering = ["title"]
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
+
     def __str__(self):
         return self.title
+
+
 
 class Tag(models.Model):
     title = models.CharField(max_length=150)
     slug = models.SlugField(max_length=150, unique=True, verbose_name="URL")
+
+    class Meta:
+        ordering = ["title"]
+        verbose_name = "Tag"
+        verbose_name_plural = "Tags"
 
     def __str__(self):
         return self.title
@@ -27,6 +44,11 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name="posts")
     tags = models.ManyToManyField(Tag, blank=True, related_name="posts")
 
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "Post"
+        verbose_name_plural = "Posts"
 
     def __str__(self):
         return self.title

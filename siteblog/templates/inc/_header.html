@@ -1,0 +1,20 @@
+{% load static %}
+{% load menu %}
+
+<header class="header">
+        <nav class="navbar ">
+            <div class="navbar-brand">
+                <a href="/">
+                    <img src="{% static 'img/logo-2.png' %}" alt="Logo">
+                </a>
+                {% show_menu %}
+            </div>
+
+            <button class="navbar-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
