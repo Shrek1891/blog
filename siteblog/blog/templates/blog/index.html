@@ -1,7 +1,39 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block title %}{{ title }}::{{ block.super }}{% endblock title %}
 
 {% block content %}
+<div class="main">
+    <ul class="cards">
+        {% for post in posts %}
+        <li class="cards_item">
+            <div class="card" tabindex="0">
+                {% if post.photo %}
+                <div class="card_image"><img src="{{ post.photo.url }}" alt="foto "></div>
+                {% else %}
+                <div class="card_image"><img src="https://placekitten.com/600/400" alt="{{ post.title }}"></div>
+                {% endif %}
+
+                <div class="card_content">
+
+                    <h2 class="card_title">{{ post.title }}</h2>
+                    <div class="card_text">
+                        {{ post.content|truncatewords:20 }}
+                    </div>
+                    <div class="card_meta">
+                        <p class="card_author"><strong>Author:</strong> {{ post.author }}</p>
+                        <p class="card_date">{{ post.created_at|date:"M d, Y" }}</p>
+                    </div>
+
+                </div>
+                <a href="{{ post.get_absolute_url }}" class="card_link">Read more</a>
+            </div>
+
+        </li>
+        {% endfor %}
+
+    </ul>
+</div>
+
 
 {% endblock content %}
