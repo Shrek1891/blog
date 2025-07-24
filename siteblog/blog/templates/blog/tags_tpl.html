@@ -1,0 +1,11 @@
+<div class="blog-post__title">
+    <h2>Tags</h2>
+</div>
+
+<div class="blog-post__tags">
+
+    {% for tag in tags %}
+    <p><a href="{{ tag.get_absolute_url }}">{{ tag.title }}</a></p>
+    {% endfor %}
+
+</div>

@@ -1,5 +1,5 @@
 from django import template
-from blog.models import Category
+from blog.models import Category, Tag
 
 register = template.Library()
 
@@ -7,3 +7,4 @@ register = template.Library()
 def show_menu(menu_class='menu'):
     categories = Category.objects.all()
     return {'categories': categories, 'menu_class': menu_class}
+

@@ -1,38 +1,52 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load sidebar %}
 {% block title %}{{ title }}::{{ block.super }}{% endblock title %}
 
 {% block content %}
 <div class="main">
-    <ul class="cards">
-        {% for post in posts %}
-        <li class="cards_item">
-            <div class="card" tabindex="0">
-                {% if post.photo %}
-                <div class="card_image"><img src="{{ post.photo.url }}" alt="foto "></div>
-                {% else %}
-                <div class="card_image"><img src="https://placekitten.com/600/400" alt="{{ post.title }}"></div>
-                {% endif %}
+    <div class="main-content_search">
 
-                <div class="card_content">
+        <ul class="cards">
+            {% for post in posts %}
+            <li class="cards_item">
+                <div class="card" tabindex="0">
+                    {% if post.photo %}
+                    <div class="card_image"><img src="{{ post.photo.url }}" alt="foto "></div>
+                    {% else %}
+                    <div class="card_image"><img src="https://placekitten.com/600/400" alt="{{ post.title }}"></div>
+                    {% endif %}
 
-                    <h2 class="card_title">{{ post.title }}</h2>
-                    <div class="card_text">
-                        {{ post.content|truncatewords:20 }}
+                    <div class="card_content">
+
+                        <h2 class="card_title">{{ post.title }}</h2>
+                        <div class="card_text">
+                            {{ post.content|truncatewords:20 }}
+                        </div>
+                        <div class="card_meta">
+                            <p class="card_author"><strong>Author:</strong> {{ post.author }}</p>
+                            <p class="card_date">{{ post.created_at|date:"M d, Y" }}</p>
+                        </div>
+
                     </div>
-                    <div class="card_meta">
-                        <p class="card_author"><strong>Author:</strong> {{ post.author }}</p>
-                        <p class="card_date">{{ post.created_at|date:"M d, Y" }}</p>
-                    </div>
-
+                    <a href="{{ post.get_absolute_url }}" class="card_link">Read more</a>
                 </div>
-                <a href="{{ post.get_absolute_url }}" class="card_link">Read more</a>
-            </div>
 
-        </li>
-        {% endfor %}
+            </li>
+            {% endfor %}
 
-    </ul>
+        </ul>
+        <div class="sidebar">
+            {% include 'search.html' %}
+
+            {% show_tags %}
+            {% get_popular_posts %}
+
+
+        </div>
+    </div>
+
+
     {% if page_obj.has_other_pages %}
     <div class="pagination">
         <div class="pagination_links">

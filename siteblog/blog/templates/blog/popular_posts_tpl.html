@@ -1,0 +1,17 @@
+<div class="popular-posts__title">
+    <h3>Popular Posts</h3>
+</div>
+<ul class="popular-posts">
+    {% for post in posts %}
+    {% if post.photo %}
+
+    <li>
+        <a href="{{ post.get_absolute_url }}">
+            <img src="{{ post.photo.url }}" alt="foto">
+            {% endif %}
+            <p >{{ post.title }}</p>
+            <p>{{ post.created_at|date:"M d, Y" }}</p>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
